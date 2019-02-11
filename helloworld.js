@@ -1,0 +1,1 @@
+document.write(" hello world,这是外部引入的js文件的方式");
