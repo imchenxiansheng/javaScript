@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js预编译</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+	<script type="text/javascript">
+	//输出结果是什么
+		function fn(a){
+			console.log(a);
+			var a=123;
+			console.log(a);
+			function a(){}
+			console.log(a);
+			var b = function(){}
+			console.log(b);
+			function d(){}
+			
+		}
+		fn(1);
+		/*
+		4.	预编译4部曲
+		1.	创建AO对象 ,(activation  object  执行期上下文)
+		AO{}
+		2.	找形参和变量声明，将变量和形参 作为AO对象的属性名，值为 undefined
+		3.	将实参值，与形参统一
+		4.	在函数体 里面找函数声明（function a(){} 是,  var a = function a(){} 不是）， 函数名为 AO 对象的属性名，值  为函数体
+		
+		AO{
+			a : undefined; 1; function a(){}; 123;
+			b : undefined; function(){};
+			d : function d(){};
+			
+		}
+		
+		function a(){}
+		123
+		123
+		function (){}
+		*/
+		
+		function test(a,b){
+			console.log(a);
+			c=0;
+			var c;
+			a=3;
+			b=2;
+			console.log(b);
+			function b(){}
+			function d(){}
+			console.log(b);
+		}
+		test(1);
+		
+		/*
+			AO{
+				a : undefined; 1 ; 3
+				b : undefined; function b(){}; 2;
+				c : undefined;0
+				d : function d(){};
+			}
+			
+			1
+			2
+			2
+		*/
+		
+		function bar(){
+			return foo;
+			foo = 10;
+			function foo(){
+				//.....
+			}
+			var foo = 11;
+			
+		}
+		console.log(bar());
+		/*
+			AO{
+				foo : undefined;function foo(){};
+			}
+			
+			function foo(){}
+		*/
+		
+		
+	</script>
+</body>
+</html>
