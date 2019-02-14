@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>包装类</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+	<script type="text/javascript">
+		var str ="abc";
+		str.length = 2;//这里是包装类  new  String(‘abc’).length =2; 执行完了就删除了，跟上面的 str  没关系了
+		console.log(str.length);//3   // new  String(‘abc’).length,执行完，也会删除， 
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>包装类</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<script type="text/javascript">
+	/*
+	var str = "abc";
+	str +=1;
+	var test = typeof(str); //"String"
+	if(test.length == 6){
+		test.sign = "typeof 的返回结果可能为String";
+		
+	}
+	console.log(test.sign);//undefined
+	*/
+	
+	function Person(name,age,sex){
+		var a = 0;
+		this.name =name;
+		this.age = age;
+		this.sex = sex;
+		function sss(){
+			a++;
+			document.write(a+" , ");
+			
+		}
+		this.say = sss;
+	}
+	var person1  = new Person();
+	person1.say(); //1
+	person1.say();  //2
+	var person2 = new Person();
+	person2.say();//1
+</script>
+</body>
+</html>

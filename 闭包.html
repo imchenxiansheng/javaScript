@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>闭包</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+	<script type="text/javascript">
+	//输出结果 10,10,10,10,10,10,10,10,10,10,
+	
+		function test(){
+			var arr = [];
+			for(var i = 0; i<10; i++){
+				arr[i] = function(){
+					document.write(i + ",");
+				}
+			}
+			return arr;
+		}
+		
+		var myarr = test();//test函数执行完，i=10， arr里面装了10个函数，但函数未执行，
+		for(var j=0;j<10;j++){
+			myarr[j]();//这儿才开始执行 arr里的函数，此时 i=10
+		}
+		
+		
+		//0,1,2,3,4,5,6,7,8,9,
+		function test2(){
+			var arr = [];
+			for(var i = 0; i<10; i++){
+				(function(j){
+				
+					arr[j] = function(){
+						document.write(j + ",");//这次的j  拿的立即执行函数  执行期上下文中的j，也就是每次执行立即函数时的j
+					}
+				}(i));
+			}
+			return arr;
+		}
+		
+		var myarr2 = test2();
+		for(var j=0;j<10;j++){
+			myarr2[j]();
+		}
+		
+		
+	</script>
+</body>
+</html>
