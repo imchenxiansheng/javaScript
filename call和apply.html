@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>call/apply</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<script type="text/javascript">
+	//call 改变 this 指向，
+	
+	function Person (name,age){
+		this.name =name;
+		this.age = age;
+	}
+	
+	var obj ={};
+	Person.call(obj , "lisi",16);//执行完 obj={name: "lisi", age: 16}
+	//call 的第一个参数 为 改变后 this的指向，    原本指向 window，现在执行 obj， 后面的参数为实参
+	
+	Person.apply(obj,["zhang san" ,15]);// apply 与call的区别在于， apply的实参必须放在一个数组里
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>枚举</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<script type="text/javascript">
+
+// for  in  循环
+	var obj = { 
+			name:"lisi",
+			age:13, 
+			sex:"male",
+			__proto__:{
+				lastName: "deng"
+			}
+		}
+
+	for( var prop  in  obj){
+		if(obj.hasOwnProperty(prop)){		
+			console.log(prop+"   ");
+			console.log(obj[prop]);
+		}
+	}
+	//区别数组与对象的3种方法
+	//1.instanceof
+	//2.Object.prototype.toString.call([]),
+	//Object.prototype.toString.call({})
+	//3.constructor
+	
+	
+ 
+ 
+	
+</script>
+</body>
+</html>

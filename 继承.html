@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>继承</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<script type="text/javascript">
+	//圣杯模式
+	function inherit (Target,Origin){
+		function F (){};
+		F.protorype = Origin.prototype;
+		Target.prototype = new F();
+		Target.prototype.constructor = Target;
+	}
+	
+	function Father (){}
+	function Son (){}
+	
+	inherit(Son,Father);
+	var son = new Son();
+	var father = new Father();
+</script>
+</body>
+</html>

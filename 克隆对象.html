@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>克隆</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<script type="text/javascript">
+	//将A 对象的属性 全部克隆 给B, A与B 不在有任何关系
+	
+	/*
+	思路： 
+			0, 遍历  for(var prop in origin)
+			1，判断是不是 原始值， typeof(prop) == "object" ,表示对象或数组,其他都是原始值
+			2，判断 是 数组 或对象 ，Object.prototype.toString.call(prop) == "[object Array]",表示数组，"[object Object]" 表示对象
+			3，建立相应的数组或对象
+			4.递归
+	*/
+	var obj1 = {
+		name : "abc",
+		age : 12,
+		sex : "female",
+		arr : ["visa","unionpay"],
+		wife : {
+			name : "lisi",
+			son : {
+				name : "san mao"
+			}
+		}
+	}
+	
+	var obj2 = {};
+	
+	function clone(origin,target){
+		var target = target || {};
+		var strArr = "[object Array]";
+		var strObj = "[object Object]";
+		
+		for(var prop in origin){
+			if(origin.hasOwnProperty(prop)){
+				if(typeof(origin[prop]) != "null" && typeof(origin[prop])=="object" ){
+					target[prop] = Object.prototype.toString.call(origin[prop]) == strArr ? [] : {};
+					clone(origin[prop],target[prop]);
+				}else{
+					target[prop] = origin[prop];
+				}
+			}
+		}
+		return target;
+	}
+	clone(obj1,obj2);
+</script>
+</body>
+</html>

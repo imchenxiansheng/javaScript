@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>原型</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<script type="text/javascript">
+	//Person.prototype ={}  //.prototype 得到的对象就是 原型
+	Person.prototype.name="abc";
+	function Person (){
+	
+	}
+	
+	var person1 = new Person(); //person1 没有name属性，但它继承了原型的name属性，
+	console.log(person1.name);//abc
+	consonle.log(person1.__proto__);//查看原型
+	var person2 = new Person();
+</script>
+</body>
+</html>
