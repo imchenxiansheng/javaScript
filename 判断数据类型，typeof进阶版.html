@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>typeof 进阶版</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		null
+		原始值  String，boolean，number，function，undefined  typeof可以区分出来
+		引用值  Array   "[object Array]"
+				Object  "[object Object]"
+				Number  "[object Number]"
+				String  "[object String]"
+				Boolean "[object Boolean]"
+	*/
+	
+	function type(origin){
+		var temp ={
+			"[object Array]" : "array-object",
+			"[object Object]" : "object-object",
+			"[object Number]" : "number-object",
+			"[object String]" : "string-object",
+			"[object Boolean]" : "boolean-object"
+		}
+		if(origin == null){
+			return null;
+		}else if(typeof(origin) == "object"){
+			var str = Object.prototype.toString.call(origin);
+			return temp[str];
+		}else{
+			return typeof(origin);
+		}
+	}
+</script>
+</body>
+</html>

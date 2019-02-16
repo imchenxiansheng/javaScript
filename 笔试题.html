@@ -125,7 +125,7 @@
 		
 	}
 	print();
-*/
+
 	//10.
 	var bar = {a : "002"};
 	function print(){
@@ -138,6 +138,56 @@
 	}
 	print()();//a  b
 
+	//11. obj 的结果？
+	var obj ={
+		"2":"a",
+		"3":"b",
+		"length":5,
+		"push": Array.prototype.push
+	}
+	obj.push("c");
+	obj.push("d");
+*/
+	//12.一个字符串 由 a-z组成，找出第一个，只出现一次的字母。
+	/*
+		思路：
+		把字符串变成数组，split("")
+		去重， 的到一个数组
+		创建一个新数组，存每个字母出现的次数，（与去重后的数组一一对应）
+		遍历次数 数组，找到第一个1的  在第几个，在去去重数组找对应的字母
+		
+		
+	*/
+	var str = "fdazzmoidshfonfddnmcznvceuhfnmnzmbaqpmlk";
+	var arr = str.split("");
+	
+	var  qc = [];//去重 后的数组
+	var  obj = {};
+	for(var i=0; i<arr.length ; i++){
+		if(!obj[arr[i]]){
+			obj[arr[i]] = "a";
+			qc.push(arr[i]);
+		}
+	}
+	var cs =[];//次数数组
+	for(var i=0; i< qc.length;i++){
+		var count = 0;
+		for(var j=0 ; j< arr.length; j++){
+			if(qc[i] == arr[j]){
+				count++;
+			}
+		}
+		cs.push(count);
+	}
+	
+	var n;//第一个 1 的下标
+	for(var i = 0;i<cs.length; i++){
+		if(cs[i] == 1){
+			n = i;
+			break;
+		}
+	}
+	console.log(qc[n]);
 </script>
 </body>
 </html>
