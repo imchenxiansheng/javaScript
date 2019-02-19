@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM练习题</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<div>
+	<button></button>
+	<span></span>
+	<input name="aa" />
+</div>
+
+<script type="text/javascript">
+/*
+	//1.封装函数 insertAfter() ,功能类似insertBefore
+	var div = document.getElementsByTagName("div")[0];
+	var span = document.getElementsByTagName("span")[0];
+	var p = document.createElement("p");
+	//div.insertBefore(p,span); //在 span 节点之前 插入 p节点
+	
+	//div.insertBefore(p,null);
+
+	Element.prototype.insertAfter = function(node,origin){
+		var after = origin.nextElementSibling;
+		if(after == null){
+			div.appendChild(node);
+		}else(
+			div.insertBefore(node,after);		
+		)
+	}
+	div.insertAfter(p,span);
+*/ 
+	
+	
+	//2.将目标节点内部节点顺序  反过来
+	var div = document.getElementsByTagName("div")[0];
+	// var a = div.childNodes;
+	var b = div.children;
+	function reverse(obj){
+		var len = obj.length;
+		for(var i=len-1;i>=0; i--){
+			div.appendChild(b[i]);
+		}		
+		return obj;
+	}
+	reverse(b);
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

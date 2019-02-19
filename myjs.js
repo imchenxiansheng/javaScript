@@ -40,3 +40,27 @@ function type(origin){
 	}
 }
 //------------------------------------------------------------
+
+//获取 css元素的属性
+function getStyle(ele,prop){
+	if(window.getComputedStyle){
+		return window.getComputedStyle(ele,null)[prop];
+	}else{
+		return ele.currentStyle[prop]
+	}
+}
+//---------------------------------------------------------
+
+//一个事件绑定多个函数
+function  addEvent(ele,type,func){
+	if(ele.addEventListener){
+		ele.addEventListener(type,func,false);
+	}else if(ele.attachEvent){
+		ele.attachEvent("on"+type,function(){
+			func.call(ele);
+		});
+	}else{
+		ele["on" +type] = func;
+	}
+	
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>计时器</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+	<style type="text/css">
+		input{
+			border : 1px solid rgba(0,0,0,0.8);
+			text-align : right;
+			
+		}
+	</style>
+</head>
+<body> 
+	minutes : <input type="text" value="0" />
+	seconds : <input type="text" value="0" />
+<script type="text/javascript">
+//计时器， 到3分钟时 停止
+	var input = document.getElementsByTagName("input");
+	
+	var minutes = 0,seconds = 0;
+	
+	var id = setInterval(function jishi(){
+		seconds ++;
+		if(seconds>= 60){
+			seconds = 0;
+			minutes ++;
+		}
+		input[1].value = seconds;
+		input[0].value = minutes;
+		if(minutes >= 1){
+			clearInterval(id);
+		}
+	
+	},1000);
+	
+</script>
+</body>
+</html>

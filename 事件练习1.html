@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件练习1</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+	<ul>
+		<li>a1</li>
+		<li>a2</li>
+		<li>a3</li>
+		<li>a4</li>
+	</ul>
+<script type="text/javascript">
+	//要求  ，给每个li绑定一个onclick 事件，点击输出他们的顺序
+	var li = document.getElementsByTagName("li");
+	len = li.length;
+	for(var i=0; i<len; i++){
+		(function(n){
+			li[n].addEventListener("click",function(){
+				console.log(n+1);
+			},false);		
+		}(i))
+	}
+</script>
+</body>
+</html>

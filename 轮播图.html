@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>轮播图</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">	
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		
+		li{
+			position : absolute;
+			
+		}
+		.container{
+			overflow:hidden;
+			width:300px;
+			height:200px;
+			position:relative;
+		}
+	</style>
+</head>
+<body> 
+	<div class="container">
+		<ul class="slider" style="left:-1500px;">
+			<li class="slider-item">
+				<img class="slider-pic" src="G:\\fuxi\\html+css3+JavaScript\\img\\1.png"/>
+			</li>
+			<li class="slider-item">
+				<img class="slider-pic" src="G:\\fuxi\\html+css3+JavaScript\\img\\2.png"/>
+			</li>
+			<li class="slider-item">
+				<img class="slider-pic" src="G:\\fuxi\\html+css3+JavaScript\\img\\3.png"/>
+			</li>
+			<li class="slider-item">
+				<img class="slider-pic" src="G:\\fuxi\\html+css3+JavaScript\\img\\4.png"/>
+			</li>
+			<li class="slider-item">
+				<img class="slider-pic" src="G:\\fuxi\\html+css3+JavaScript\\img\\5.png"/>
+			</li>
+			
+		</ul>
+	</div>
+<script type="text/javascript">
+/*
+思路： 
+	1.先创建一个div，限定其宽度和高度，overflow：hidden，且设置其position为relative。
+	2.然后创建一个装图片的div，宽度为所有图片的总宽度，且设置其position为absolute，
+	并且使其中的内容浮动，这样所有的图片就处于一行中。然后为了实现无缝滚动，所以需要在首尾分别添加一张过渡图片。
+	3.先添加两个按钮， 使其可以手动轮播，
+	4.然后只需要添加一个定时器使其朝一个方向自动轮播即可，
+	5.因为用户有时需要查看详情，所以当鼠标进入时就clear定时器，滑出再定时播放。
+	6.为了更好地用户体验，我们再下面添加了一排小圆点，用户可以清楚地知道现在所处的位置， 
+	7.最后， 利用闭包使得用户可以直接通过点击小圆点切换图片
+*/
+	var li = document.getElementsByTagName("li");
+	for(var i=0;i<li.length; i++){
+		li[i].style.left = parseInt(getStyle(li[i],"left"))+ i*300 +"px";
+		
+	}
+	
+	var count =0;
+	
+		var id = setInterval(function(){
+			for(var i=0;i<li.length; i++){
+				li[i].style.left = parseInt(li[i].style.left) - 300 +"px";
+				if(parseInt(li[i].style.left) < 0){
+					li[i].style.left = 1200 +"px";
+				}
+			}
+			
+			count ++;
+			if(count >=10){
+				clearInterval(id);
+			}
+		},1000);
+		
+	
+	
+	function getStyle(ele,prop){
+		if(window.getComputedStyle){
+			return window.getComputedStyle(ele,null)[prop];
+		}else{
+			return ele.currentStyle[prop]
+		}
+	}
+</script>
+</body>
+</html>

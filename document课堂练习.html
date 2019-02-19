@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>document</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+
+<script type="text/javascript">
+	//var div1 = document.getElementsByTagName("div")[0];
+	//var text = document.createTextNode("aaaa");
+	//div.appendChild(text);
+	//var p = document.getElementsByTagName("p")[0];
+	//div.removeChild(p);
+	
+	var div = document.createElement("div");
+	div.setAttribute("class","example");
+	var p = document.createElement("p");
+	p.setAttribute("class","slogan");
+	//p.innerHTML = "姬成，你最帅！";
+	var text = document.createTextNode("姬成，你最帅");
+	p.appendChild(text);
+	div.appendChild(p);
+	document.body.appendChild(div);
+	 
+	
+</script>
+</body>
+</html>

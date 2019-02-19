@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>document</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<input name = "text" />
+<div id = "only" class="classdiv"> 123
+	<!--  aaaa  -->
+	<span></span>
+	<p>
+		<p>
+			<ul></ul>
+		</p>
+	</p>
+	<ul></ul>
+	<p></p> 
+</div>
+<script type="text/javascript">
+	//var div = document.getElementById("only"); //id 选择
+	//var div = document.getElementsByTagName("div")[0];//标签名 选择
+	var div = document.getElementsByClassName("classdiv")[0];//class名 选择
+	var text = document.getElementsByName("text")[0];//name 选择,只有部分标签name可生效，一般作为可提交数据的数据名 
+	var div2 = document.querySelector("#only");//css选择器, 不用，它不是 时时的
+	var div3 = document.querySelectorAll("#only");//css选择器, 不用，它不是 时时的
+</script>
+</body>
+</html>

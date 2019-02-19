@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>脚本化css</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+	<style type="text/css">
+		div{
+			width:200px;
+		}
+		div::after{
+			content:"";
+			width:100px;
+			height:100px;
+			background-color:green;
+			display:inline-block;
+		}
+	</style>
+</head>
+<body> 
+	<div style="height:200px;background-color:red;position:absolute;"></div>
+<script type="text/javascript">
+	var div = document.getElementsByTagName("div")[0];
+	//div.style.width = "300px";
+	
+	function getStyle(ele,pro){
+		if(window.getComputedStyle){
+			return window.getComputedStyle(ele,null)[pro];
+		}else{
+			return ele.currentStyle[pro];
+		}
+	}
+	
+	var id = setInterval(function(){
+		div.style.left = parseInt(getStyle(div,"left")) + 10 +"px";
+		
+		if(parseInt(div.style.left) > 300){
+			clearInterval(id);	
+		}
+	},100);
+	
+	
+</script>
+</body>
+</html>

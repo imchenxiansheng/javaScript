@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>date对象</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<script type="text/javascript">
+	var date = new Date().getTime();
+	var a = 0;
+	
+	var time1 = setInterval(function(){
+		var newDate = new Date().getTime();
+		console.log( newDate - date);
+		date = newDate;
+		a++;
+		if(a>3){		
+			clearInterval(time1);
+		}
+	},1000);
+	
+	
+	var time2 = setTimeout(function(){
+		console.log("ni hao ");
+	} ,5000);
+</script>
+</body>
+</html>
