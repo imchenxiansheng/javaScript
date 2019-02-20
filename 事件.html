@@ -5,7 +5,43 @@
 	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
 </head>
 <body>
+
 	<div style="width:100px;height:100px;background-color:red;"></div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<a href="#"> www.baidu.com </a>
 <script type="text/javascript">
 
 	var div = document.getElementsByTagName("div")[0];
@@ -13,6 +49,17 @@
 		console.log("a");
 		console.log(this);
 	}
+	div.oncontextmenu = function(e){//右键事件
+		console.log(e);
+		//return false;//阻止右键事件 
+		e.preventDefault(); //阻止右键事件
+		
+	}
+	var a = document.getElementsByTagName("a")[0];
+	a.onclick = function(){//阻止a标签 跳转
+		return false;
+	}
+	
 	
 	div.addEventListener('click',function(){	
 		console.log("b");
@@ -21,6 +68,8 @@
 	div.addEventListener('click',function(){	
 		console.log("c");
 	},false);
+	
+	//阻止a标签 跳转事件
 
 /*
 	//ie 独有

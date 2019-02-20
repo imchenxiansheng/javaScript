@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件委托</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+	</ul>
+<script type="text/javascript">
+	//需求，给每个li绑定onclick 事件， 单击输出li 的内容
+	
+	//思路，利用事件冒泡，和事件源对象，进行处理
+	
+	var ul = document.getElementsByTagName("ul")[0];
+	ul.onclick = function(e){
+		var event = e || window.event;
+		var target = event.target || event.srcElement;
+		console.log(target.innerText);
+	}
+	
+</script>
+</body>
+</html>

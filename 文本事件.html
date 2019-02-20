@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>文本事件</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+	<style type="text/css">
+		.qian{
+			color:#999;
+		}
+		.shen{
+			color:#424242;
+		}
+	</style>
+</head>
+<body>
+	<input id="username" class="qian" type="text" value="请输入用户名" style="border: 2px solid rgba(0,0,0,1)" />
+<script type="text/javascript">
+	var input = document.getElementById("username");
+	/*
+	//只要内容改变 就会触发
+	input.oninput = function(e){
+		console.log(this.value);
+	}
+	*/
+	/*
+	//获得焦点时的内容，与失去焦点后的内容有 变化，才会触发
+	input.onchange = function(e){
+		console.log(this.value);
+	}
+	*/
+	input.onfocus = function(e){
+		this.value = "";
+		this.className ="shen";
+		console.log("获得焦点");
+	}
+	
+	input.onblur = function(e){
+		if(this.value==""){
+			this.value = "请输入用户名";
+			this.className ="qian";
+		}
+		console.log("失去焦点");
+	}
+</script>
+</body>
+</html>

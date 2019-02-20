@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>拖滑块练习</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+<div style="width:100px;height:100px;background-color:red;position:absolute;left:0;top:0;"></div>
+<script type="text/javascript">
+	var div = document.getElementsByTagName("div")[0];
+	var downx,downy;	
+	div.onmousedown = function(e){//鼠标按下事件
+		var event = e || window.event;
+		downx = event.pageX;
+		downy = event.pageY;
+		var divx = div.style.left;
+		var divy = div.style.top;
+		/*
+		if(e.button==2){
+			console.log("右键");
+		}else if(e.button ==0){
+			console.log("左键");
+		}else if(e.button ==1){
+			console.log("中间滚轮");
+		}
+		*/
+		document.onmousemove = function(e){//鼠标移动事件
+			var event2 = e || window.event;
+			var overx = event2.pageX;
+			var overy = event2.pageY;
+			
+	
+			div.style.left  = parseInt(divx) + (overx - downx) +"px";
+			div.style.top = parseInt(divy) + (overy - downy) + "px";
+			
+		}
+		document.onmouseup  = function(){//鼠标松开事件
+			document.onmousemove = null;
+		}
+	}
+</script>
+</body>
+</html>

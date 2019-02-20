@@ -64,3 +64,24 @@ function  addEvent(ele,type,func){
 	}
 	
 }
+//------------------------------------------------------------
+
+//异步 按需加载js
+function loadScript(url,callback){
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		//myjs.js里的代码必须  myjs.js加载完成后才能调用	
+		if(script.readyState){		
+			script.onreadystatechange = function(){ //就ie能用
+				if(script.readyState == "complete" || script.readyState == "loaded"){
+					//code
+				}
+			}
+		}else{
+			script.onload = function(){//script.onload 非ie浏览可用
+				//....
+			}
+		}		
+		script.src = url;		
+		document.head.appendChild(script);
+	}
