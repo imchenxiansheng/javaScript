@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则表达式</title>
+	<mate http-equiv="Content-Type" content="text/html ;charset=gb2312">
+</head>
+<body>
+email : <input type="text" value="请输入你的邮箱" style="color:#999;" onfocus="if(this.value=='请输入你的邮箱'){this.value=''}" onblur="if(this.value==''){this.value='请输入你的邮箱'}"  />
+<script type="text/javascript">
+	/*
+		\r   行结束符
+		\n   换行
+		\t   tab键
+		i    不区分大小写
+		g    全局匹配
+		m    多行匹配
+		[]   一个[] 代表一个字符
+		()   字表达式
+		reg.test()
+		str.match();
+	*/
+		
+	var reg = /[0-9][abc]/g;  //第一位字符0-9，第二位字符 abc中的一个
+	var str = "1334adsb423cdadf";
+	
+	console.log(str.match(reg));//4a   3c
+	
+	var reg2 = /(abc|bcd)/g; // 匹配 abc  或bcd
+	var str2 = "abc";
+	var str3 = "bcd";
+	console.log(reg2.test(str2)); //true
+	console.log(reg2.test(str3)); //true
+	
+	/*
+		\w  === [0-9A-z_]
+		\d  === [0-9]
+		\s  ===  空白字符 ，包括 空格 ，换行符 \n，换页符 \f，制表符 \t，回车符 \r，垂直换行符 \v
+		
+		n+    {1,}   匹配1个 到 无穷多个 n
+		n*	  {0,}
+		n?    {0,1}
+		n{x}         匹配x个 n
+		n{x,y}       匹配x个 到 y 个 n
+		n{x,}
+		^n  		 匹配以n开头的
+		n$			 n结尾的
+	*/
+	var reg3 = /\w+/g;
+	var str4 = "a";
+	var str5 = "dadsc";
+	var str6 = "ddddddddadwfeaf";
+	console.log(str4.match(reg3)); //a
+	console.log(str5.match(reg3)); //dadsc
+	console.log(str6.match(reg3)); //ddddddddadwfeaf
+	
+	var reg4 = /\w*/g;
+	var str7 = "123";
+	console.log(str7.match(reg4)); //"123", ""
+	
+	var reg5 =/\w{3}/g;
+	var str9 = "abcdddefgf";
+	console.log(str9.match(reg5));//"abc", "ddd", "efg"
+	
+	var reg6 =/\w{3,5}/g;  //3个到5个字符，能5个就不3个
+	var str10 = "aaabbccccdeeee";
+	console.log(str10.match(reg6)); //"aaabb", "ccccd", "eeee"
+	
+	var reg7 = /^a\w*c$/g;
+	var str11 = "abbbc";
+	var str12 = "ccdda";
+	console.log(str11.match(reg7));//"abbbc"
+	console.log(str12.match(reg7));// null
+	
+	//习题： 写一个正则表达式，检验字符串首 或者 尾是否含有数字
+	var reg8 = /^\d|\d$/gm;
+	//首尾都有数字
+	var reg9 = /^\d[\s\S]*\d$/g;
+	
+	// 3个连续相同的字母 ，比如 ：aaa
+	var reg10 = /(\w)\1{3}/g;  //  \1 表示使用第一个 子表达式
+	//  "aabb"
+	var reg11 = /(\w)\1(\w)\2/g;
+	
+	//String.replace   将字符中  aabb 这种 换成  bbaa
+	var  str13  = "adccddefghheejkl";
+	var  reg12 = /(\w)\1(\w)\2/g;
+	var  str14 = str13.replace(reg12,"$2$2$1$1");//relpace 方法，第一个参数是 正则表达式， 第二个参数可以使用$n 来调用正则表达式中的第n个子表达式
+	console.log(str14);
+	
+	//the-first-name 利用正则表达式   变成 小驼峰式写法  theFirstName
+	var str15 = "the-first-name";
+	var reg13 = /-([a-z])/g;
+	var str16 = str15.replace(reg13,function(a1,a2){//第一个参数a1 表示正则表达式匹配到的内容， 第二个参数a2 表示第一个子表达式匹配到的内容， 如果有多个子表达式，就继续加参数
+		console.log(a1);
+		console.log(a2);
+		
+		return a2.toUpperCase();	
+	});
+	console.log(str16);
+	
+	//正向预查， 比如： "aaabaac"  找 a后面紧跟着b的，
+	var str17 = "aaabaac";
+	var reg14 = /a(?=b)/g;  //这里b只做修饰
+	console.log(str17.match(reg14));
+	//将 1000000000 变成科学计数的 写法  1,000,000,000  从后往前每隔3为加个逗号
+	/*
+		思路；
+		用逗号 替换空
+		匹配空
+		
+		从后往前查  $
+		3个数字  \d{3}
+		0到多个  *
+		最前面不有， 就是非单词边界 \B
+		
+	*/
+	var str18 = "100";
+	
+	var reg15 = /(?=\B(\d{3})*$)/g;
+	
+	console.log(str18.replace(reg15,","));
+</script>
+</body> 
+</html>
